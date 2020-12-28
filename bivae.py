@@ -55,7 +55,7 @@ def retrieve_dataset():
 
 
 if __name__ == "__main__":
-    train_path, test_path = retrieve_dataset(args.dataset)
+    train_path, test_path = retrieve_dataset()
 
     reader = cornac.data.Reader()
     train_data = reader.read(fpath=train_path, sep="\t")
