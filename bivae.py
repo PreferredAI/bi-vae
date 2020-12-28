@@ -38,7 +38,7 @@ args = parser.parse_args()
 print(args)
 
 
-def retrieve_dataset(dataset):
+def retrieve_dataset():
     dataset_dir = f"./data/{args.dataset}"
     os.makedirs(dataset_dir, exist_ok=True)
 
