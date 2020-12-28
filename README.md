@@ -24,6 +24,10 @@ If you find the code and data useful in your research, please cite:
 
 ## How to run
 
+```bash
+pip install -r requirements.txt
+```
+
 Run BiVAE model:
 
 ```python
