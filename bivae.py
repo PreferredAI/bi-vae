@@ -62,7 +62,10 @@ if __name__ == "__main__":
     test_data = reader.read(fpath=test_path, sep="\t")
 
     eval_method = cornac.eval_methods.BaseMethod.from_splits(
-        train_data=train_data, test_data=test_data, verbose=args.verbose
+        train_data=train_data, 
+        test_data=test_data,
+        seed=args.random_seed,
+        verbose=args.verbose,
     )
 
     bivae = cornac.models.BiVAECF(
