@@ -166,7 +166,7 @@ if __name__ == "__main__":
     feature_ids = dataset.ids
     for _id in set(rating_ids) - set(feature_ids):
         feature_ids.append(_id)
-        output = np.vstack([output, np.zeros([1, args.latent_dim])])
+        output = np.vstack([output, np.zeros([1, args.latent_dim], dtype=np.float32)])
 
     outfile = f"./data/{args.dataset}/{args.which}_features.npz"
     np.savez(outfile, ids=feature_ids, features=output)
