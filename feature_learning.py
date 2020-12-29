@@ -1,5 +1,6 @@
 import os
 import argparse
+import itertools
 
 import numpy as np
 import torch
@@ -90,20 +91,34 @@ def retrieve_dataset():
     dataset_dir = f"./data/{args.dataset}"
     os.makedirs(dataset_dir, exist_ok=True)
 
+    train_path = cache(
+        url=f"https://static.preferred.ai/bi-vae/{args.dataset}/train.txt",
+        cache_dir=dataset_dir,
+    )
+    test_path = cache(
+        url=f"https://static.preferred.ai/bi-vae/{args.dataset}/test.txt",
+        cache_dir=dataset_dir,
+    )
+    reader = Reader()
+    train_data = reader.read(fpath=train_path, sep="\t")
+    test_data = reader.read(fpath=test_path, sep="\t")
+
     if args.which == "user":
         user_text_path = cache(
             url=f"https://static.preferred.ai/bi-vae/{args.dataset}/user_texts.txt",
             cache_dir=dataset_dir,
         )
         dataset = TextDataset(user_text_path)
+        rating_ids = [x[0] for x in itertools.chain(train_data, test_data)]
     else:
         item_context_path = cache(
             url=f"https://static.preferred.ai/bi-vae/{args.dataset}/item_contexts.txt",
             cache_dir=dataset_dir,
         )
         dataset = ContextDataset(item_context_path)
+        rating_ids = [x[1] for x in itertools.chain(train_data, test_data)]
 
-    return dataset
+    return dataset, rating_ids
 
 
 if __name__ == "__main__":
@@ -112,7 +127,7 @@ if __name__ == "__main__":
         torch.manual_seed(args.random_seed)
         torch.cuda.manual_seed(args.random_seed)
 
-    dataset = retrieve_dataset()
+    dataset, rating_ids = retrieve_dataset()
     dataloader = DataLoader(
         dataset, batch_size=args.batch_size, shuffle=True, num_workers=4
     )
@@ -147,6 +162,12 @@ if __name__ == "__main__":
             output[batch_idx.numpy()] = mu.detach().cpu().numpy()
         pbar.set_postfix(loss=(sum_loss / len(dataset)))
 
+    # zeros for user/item without any information
+    feature_ids = dataset.ids
+    for _id in set(rating_ids) - set(feature_ids):
+        feature_ids.append(_id)
+        output = np.vstack([output, np.zeros([1, args.latent_dim])])
+
     outfile = f"./data/{args.dataset}/{args.which}_features.npz"
-    np.savez(outfile, ids=dataset.ids, features=output)
+    np.savez(outfile, ids=feature_ids, features=output)
     print(f"Output saved: {outfile}")
