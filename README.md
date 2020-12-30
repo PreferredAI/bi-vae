@@ -15,7 +15,7 @@ If you find the code and data useful in your research, please cite:
 ```
 @inproceedings{truong2021bilateral,
   title={Bilateral Variational Autoencoder for Collaborative Filtering},
-  author={Truong, Quoc-Tuan, Salah, Aghiles, and Lauw, Hady W},
+  author={Truong, Quoc-Tuan, and Salah, Aghiles, and Lauw, Hady W},
   booktitle={ACM International Conference on Web Search and Data Mining, {WSDM} 2021}
   year={2021},
 }
