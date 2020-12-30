@@ -51,15 +51,15 @@ def retrieve_dataset():
         cache_dir=dataset_dir,
     )
 
-    return train_path, test_path
-
-
-if __name__ == "__main__":
-    train_path, test_path = retrieve_dataset()
-
     reader = cornac.data.Reader()
     train_data = reader.read(fpath=train_path, sep="\t")
     test_data = reader.read(fpath=test_path, sep="\t")
+
+    return train_data, test_data
+
+
+if __name__ == "__main__":
+    train_data, test_data = retrieve_dataset()
 
     eval_method = cornac.eval_methods.BaseMethod.from_splits(
         train_data=train_data, 

@@ -57,18 +57,19 @@ def retrieve_dataset():
         cache_dir=dataset_dir,
     )
 
-    return train_path, test_path
-
-
-if __name__ == "__main__":
-    train_path, test_path = retrieve_dataset()
-
     reader = cornac.data.Reader()
     train_data = reader.read(fpath=train_path, sep="\t")
     test_data = reader.read(fpath=test_path, sep="\t")
 
-    user_features = np.load(f"./data/{args.dataset}/user_features.npz")
-    item_features = np.load(f"./data/{args.dataset}/item_features.npz")
+    user_features = np.load(f"{dataset_dir}/user_features.npz")
+    item_features = np.load(f"{dataset_dir}/item_features.npz")
+
+    return train_data, test_data, user_features, item_features
+
+
+if __name__ == "__main__":
+    train_data, test_data, user_features, item_features = retrieve_dataset()
+    
     uf_modality = FeatureModality(user_features["features"], user_features["ids"])
     if_modality = FeatureModality(item_features["features"], item_features["ids"])
     
