@@ -2,7 +2,7 @@
 
 This is the code for the paper:
 
-**[Bilateral Variational Autoencoder for Collaborative Filtering]()**
+**[Bilateral Variational Autoencoder for Collaborative Filtering](https://dl.acm.org/doi/pdf/10.1145/3437963.3441759)**
 <br>
 [Quoc-Tuan Truong](http://www.qttruong.info/), [Aghiles Salah](http://saghiles.github.io/), and [Hady W. Lauw](http://www.hadylauw.com/)
 <br>
