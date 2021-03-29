@@ -48,6 +48,10 @@ python feature_learning.py -d office -w item -k 20 -e '[100]' -a tanh -l pois -n
 python bivae_cap.py -d office -uc -ic -k 20 -e '[40]' -a tanh -l pois -ne 500 -bs 128 -lr 0.001 -tk 50 -v
 ```
 
+## Related
+
+- [Implementation of BiVAE in Cornac](https://github.com/PreferredAI/cornac/tree/master/cornac/models/bivaecf)
+- [BiVAE tutorial with Microsoft Recommenders](https://github.com/microsoft/recommenders/blob/staging/examples/02_model_collaborative_filtering/cornac_bivae_deep_dive.ipynb)
 
 ## Contact
 Questions and discussion are welcome: www.qttruong.info
