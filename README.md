@@ -51,7 +51,7 @@ python bivae_cap.py -d office -uc -ic -k 20 -e '[40]' -a tanh -l pois -ne 500 -b
 ## Related
 
 - [Implementation of BiVAE in Cornac](https://github.com/PreferredAI/cornac/tree/master/cornac/models/bivaecf)
-- [BiVAE tutorial with Microsoft Recommenders](https://github.com/microsoft/recommenders/blob/staging/examples/02_model_collaborative_filtering/cornac_bivae_deep_dive.ipynb)
+- [BiVAE tutorial with Microsoft Recommenders](https://github.com/microsoft/recommenders/blob/main/examples/02_model_collaborative_filtering/cornac_bivae_deep_dive.ipynb)
 
 ## Contact
 Questions and discussion are welcome: www.qttruong.info
