@@ -4,7 +4,7 @@ This is the code for the paper:
 
 **[Bilateral Variational Autoencoder for Collaborative Filtering](https://dl.acm.org/doi/pdf/10.1145/3437963.3441759)**
 <br>
-[Quoc-Tuan Truong](http://www.qttruong.info/), [Aghiles Salah](http://saghiles.github.io/), and [Hady W. Lauw](http://www.hadylauw.com/)
+[Quoc-Tuan Truong](http://www.qttruong.com/), [Aghiles Salah](http://saghiles.github.io/), and [Hady W. Lauw](http://www.hadylauw.com/)
 <br>
 Presented at [WSDM 2021](https://www.wsdm-conference.org/2021/)
 
@@ -54,4 +54,4 @@ python bivae_cap.py -d office -uc -ic -k 20 -e '[40]' -a tanh -l pois -ne 500 -b
 - [BiVAE tutorial with Microsoft Recommenders](https://github.com/microsoft/recommenders/blob/main/examples/02_model_collaborative_filtering/cornac_bivae_deep_dive.ipynb)
 
 ## Contact
-Questions and discussion are welcome: www.qttruong.info
+Questions and discussion are welcome: www.qttruong.com
